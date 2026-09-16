@@ -1,4 +1,5 @@
 import uploadedVideosData from "@/content/data/uploaded-videos.json";
+import scriptureMapData from "@/content/data/scripture-map.json";
 
 const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY || "";
 const CHANNEL_HANDLE = "@tv-qz2fc";
@@ -9,6 +10,7 @@ export interface YouTubeVideo {
   description: string;
   publishedAt: string;
   thumbnail: string;
+  scripture?: string;
 }
 
 async function getChannelId(): Promise<string | null> {
@@ -35,6 +37,7 @@ async function getUploadsPlaylistId(
 
 export function getVideosFromUploadedJson(): YouTubeVideo[] {
   const data = uploadedVideosData as Record<string, string>;
+  const scriptureMap = scriptureMapData as Record<string, string>;
 
   return Object.entries(data)
     .map(([key, videoId]) => {
@@ -55,6 +58,7 @@ export function getVideosFromUploadedJson(): YouTubeVideo[] {
         description: "",
         publishedAt,
         thumbnail: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+        scripture: scriptureMap[videoId],
       };
     })
     .reverse();

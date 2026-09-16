@@ -124,6 +124,9 @@ export default function YouTubeSermonList({ videos, fallbackSermons }: Props) {
                   <h3 className="text-lg font-semibold text-[#2C2416] group-hover:text-[#C46E4E] transition-colors line-clamp-2">
                     {video.title}
                   </h3>
+                  {video.scripture && (
+                    <p className="text-sm font-medium text-[#C46E4E]/80">{video.scripture}</p>
+                  )}
                   <span className="flex items-center gap-1 text-sm text-[#2C2416]/60">
                     <Calendar className="h-3.5 w-3.5" />
                     {formatDate(video.publishedAt)}
