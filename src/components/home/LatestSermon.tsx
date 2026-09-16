@@ -75,6 +75,9 @@ export default function LatestSermon() {
                 <h3 className="mt-2 font-serif text-xl font-semibold text-dark group-hover:text-terracotta transition-colors md:text-2xl">
                   {featured.title}
                 </h3>
+                {featured.scripture && (
+                  <p className="mt-1 text-sm font-medium text-[#C46E4E]/80">{featured.scripture}</p>
+                )}
                 <p className="mt-1.5 text-sm text-dark/60">김진호 목사</p>
               </div>
             </a>
