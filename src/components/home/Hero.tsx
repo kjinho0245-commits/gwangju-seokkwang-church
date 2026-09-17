@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Button from "@/components/ui/Button";
 import { ChevronDown } from "lucide-react";
 
 export default function Hero() {
@@ -48,19 +47,6 @@ export default function Hero() {
         >
           광주새서광교회에 오신 것을 환영합니다
         </motion.p>
-        <motion.div
-          className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.8 }}
-        >
-          <Button href="/worship" variant="primary">
-            예배 안내 보기
-          </Button>
-          <Button href="/contact" variant="secondary" className="border-[#2C2416]/30 text-[#2C2416] hover:bg-[#2C2416]/5">
-            오시는 길
-          </Button>
-        </motion.div>
       </div>
 
       {/* Scroll indicator */}
