@@ -28,13 +28,15 @@ const gradients = [
 export default function YouTubeSermonList({ videos, fallbackSermons }: Props) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<"전체" | "주일오전" | "수요설교">("전체");
 
   const hasVideos = videos.length > 0;
 
   const filteredVideos = videos.filter(
     (v) =>
-      searchQuery === "" ||
-      v.title.toLowerCase().includes(searchQuery.toLowerCase())
+      (activeTab === "전체" || v.category === activeTab) &&
+      (searchQuery === "" ||
+        v.title.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
   const filteredFallback = fallbackSermons.filter(
@@ -47,6 +49,23 @@ export default function YouTubeSermonList({ videos, fallbackSermons }: Props) {
 
   return (
     <div>
+      {hasVideos && (
+        <div className="mb-6 flex gap-2">
+          {(["전체", "주일오전", "수요설교"] as const).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => { setActiveTab(tab); setSelectedVideo(null); }}
+              className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+                activeTab === tab
+                  ? "bg-[#2C2416] text-white"
+                  : "bg-[#2C2416]/10 text-[#2C2416] hover:bg-[#2C2416]/20"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+      )}
       <div className="mb-8">
         <div className="relative">
           <Search

@@ -11,6 +11,7 @@ export interface YouTubeVideo {
   publishedAt: string;
   thumbnail: string;
   scripture?: string;
+  category?: "주일오전" | "수요설교";
 }
 
 async function getChannelId(): Promise<string | null> {
@@ -52,6 +53,8 @@ export function getVideosFromUploadedJson(): YouTubeVideo[] {
 
       const title = titleParts.join(" ");
 
+      const category = key.includes("수요") ? "수요설교" : "주일오전";
+
       return {
         id: videoId,
         title,
@@ -59,6 +62,7 @@ export function getVideosFromUploadedJson(): YouTubeVideo[] {
         publishedAt,
         thumbnail: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
         scripture: scriptureMap[videoId],
+        category,
       };
     })
     .reverse();
