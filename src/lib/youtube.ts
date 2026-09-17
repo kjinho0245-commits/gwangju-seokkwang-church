@@ -53,7 +53,7 @@ export function getVideosFromUploadedJson(): YouTubeVideo[] {
 
       const title = titleParts.join(" ");
 
-      const category = key.includes("수요") ? "수요설교" : "주일오전";
+      const category: "수요설교" | "주일오전" = key.includes("수요") ? "수요설교" : "주일오전";
 
       return {
         id: videoId,
