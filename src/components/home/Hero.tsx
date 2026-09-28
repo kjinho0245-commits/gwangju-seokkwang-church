@@ -52,15 +52,32 @@ export default function Hero() {
       {/* Scroll indicator */}
       <motion.button
         type="button"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#2C2416]/30 hover:text-[#2C2416]/50 transition-colors"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="group absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2.5 text-[#2C2416]/45 transition-colors hover:text-[#C46E4E]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 1 }}
         onClick={() => {
           window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
         }}
-        aria-label="아래로 스크롤"
+        aria-label="아래로 내려서 둘러보기"
       >
-        <ChevronDown className="h-7 w-7" aria-hidden="true" />
+        <span className="text-xs font-medium tracking-[0.15em] break-keep">
+          아래로 내려서 둘러보세요
+        </span>
+        {/* Mouse-shaped indicator */}
+        <span className="flex h-9 w-[22px] items-start justify-center rounded-full border-2 border-current pt-1.5">
+          <motion.span
+            className="h-1.5 w-1 rounded-full bg-current"
+            animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </span>
+        <motion.span
+          animate={{ y: [0, 5, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ChevronDown className="h-5 w-5" aria-hidden="true" />
+        </motion.span>
       </motion.button>
     </section>
   );
