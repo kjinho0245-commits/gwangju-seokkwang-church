@@ -3,7 +3,7 @@ import Image from "next/image";
 import Container from "@/components/layout/Container";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Play, ArrowRight } from "lucide-react";
-import { getLatestVideos } from "@/lib/youtube";
+import { getLatestVideos, getVideosFromUploadedJson } from "@/lib/youtube";
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
@@ -12,7 +12,8 @@ function formatDate(iso: string): string {
 
 
 export default async function LatestSermon() {
-  const videos = await getLatestVideos(1);
+  let videos = await getLatestVideos(1);
+  if (!videos.length) videos = getVideosFromUploadedJson().slice(0, 1);
   const featured = videos[0];
 
   if (!featured) return null;

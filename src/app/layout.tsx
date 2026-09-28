@@ -1,20 +1,7 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR, Noto_Serif_KR } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "./globals.css";
-
-const notoSansKR = Noto_Sans_KR({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-noto-sans-kr",
-});
-
-const notoSerifKR = Noto_Serif_KR({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-noto-serif-kr",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -45,10 +32,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="ko"
-      className={`${notoSansKR.variable} ${notoSerifKR.variable} h-full antialiased`}
-    >
+    <html lang="ko" className="h-full antialiased">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <Header />
         <main className="flex-1">{children}</main>

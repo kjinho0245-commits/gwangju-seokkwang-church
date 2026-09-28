@@ -15,8 +15,8 @@
   --color-gold: var(--color-gold);
   --color-dark: var(--color-dark);
 
-  --font-sans: var(--font-noto-sans-kr), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --font-serif: var(--font-noto-serif-kr), "Batang", serif;
+  --font-sans: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-serif: "Noto Serif KR", "Batang", serif;
 }
 
 /* Base styles */
