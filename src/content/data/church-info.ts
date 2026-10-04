@@ -5,7 +5,7 @@ export const churchInfo = {
   address: "전남광주통합특별시 동구 백서로 189번길 6-3",
   phone: "062)225-1002",
   email: "reptune@hanmail.net",
-  youtube: "https://www.youtube.com/@tv-qz2fc",
+  youtube: "https://www.youtube.com/@%EA%B9%80%EC%A7%84%ED%98%B8%EB%AA%A9%EC%82%AC",
   instagram: "https://www.instagram.com/jinho6424/",
   facebook: "https://www.facebook.com/jinho.gim2?locale=ko_KR",
   kakaoChannel: "https://pf.kakao.com/seokkwang",

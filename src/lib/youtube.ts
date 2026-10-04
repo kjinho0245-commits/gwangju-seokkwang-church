@@ -2,7 +2,7 @@ import uploadedVideosData from "@/content/data/uploaded-videos.json";
 import scriptureMapData from "@/content/data/scripture-map.json";
 
 const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY || "";
-const CHANNEL_HANDLE = "@tv-qz2fc";
+const CHANNEL_ID = "UCwZTm6RycrF3SAAsypag36Q";
 
 export interface YouTubeVideo {
   id: string;
@@ -15,12 +15,7 @@ export interface YouTubeVideo {
 }
 
 async function getChannelId(): Promise<string | null> {
-  const res = await fetch(
-    `https://www.googleapis.com/youtube/v3/channels?forHandle=${CHANNEL_HANDLE}&part=id&key=${YOUTUBE_API_KEY}`
-  );
-  if (!res.ok) return null;
-  const data = await res.json();
-  return data.items?.[0]?.id || null;
+  return CHANNEL_ID;
 }
 
 async function getUploadsPlaylistId(
