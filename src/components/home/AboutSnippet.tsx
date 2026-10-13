@@ -42,7 +42,8 @@ export default function AboutSnippet() {
               새서광교회를 소개합니다
             </h2>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-dark/60 break-keep">
-              광주새서광교회는 하나님의 말씀 위에 세워진 공동체입니다. 복음의
+              광주새서광교회는 대한예수교장로회(합동)에 소속된 교회로서, 하나님의
+              말씀 위에 세워진 공동체입니다. 복음의
               빛을 이웃과 세상에 전하며, 서로 사랑하고 섬기는 가운데 함께
               성장하는 교회를 꿈꿉니다.
             </p>
