@@ -58,7 +58,8 @@ export default function VisionPage() {
           </h1>
           <div className="mt-8 max-w-2xl">
             <p className="text-lg leading-relaxed text-[#2C2416]/70 break-keep">
-              광주새서광교회는 예수 그리스도의 복음을 전하며, 사랑과 섬김으로
+              광주새서광교회는 대한예수교장로회(합동)에 소속된 교회로서, 예수
+              그리스도의 복음을 전하며, 사랑과 섬김으로
               지역사회를 밝히는 공동체입니다. 모든 세대가 함께 예배하고,
               말씀으로 성장하며, 이웃을 향한 그리스도의 사랑을 실천합니다.
             </p>

@@ -11,7 +11,7 @@ export const churchInfo = {
   kakaoChannel: "https://pf.kakao.com/seokkwang",
   slogan: "함께 지어져 가는 교회",
   description:
-    "광주새서광교회는 하나님의 말씀 위에 세워진 공동체로, 복음의 빛을 이웃과 세상에 전하며 함께 성장하는 교회입니다.",
+    "광주새서광교회는 대한예수교장로회(합동)에 소속된 교회로서, 하나님의 말씀 위에 세워진 공동체로, 복음의 빛을 이웃과 세상에 전하며 함께 성장하는 교회입니다.",
 } as const;
 
 export type ChurchInfo = typeof churchInfo;
