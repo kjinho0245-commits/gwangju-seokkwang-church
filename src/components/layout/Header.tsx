@@ -11,6 +11,7 @@ const navLinks = [
   { label: "예배 안내", href: "/worship" },
   { label: "설교", href: "/sermons" },
   { label: "소식", href: "/news" },
+  { label: "갤러리", href: "/gallery" },
   { label: "새가족 안내", href: "/newcomer" },
   { label: "오시는 길", href: "/contact" },
 ] as const;
