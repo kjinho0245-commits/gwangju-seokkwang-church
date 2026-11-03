@@ -14,16 +14,7 @@ interface GalleryPhoto {
 }
 
 // 카테고리 표시 순서 — 사진이 없는 카테고리는 자동으로 섹션을 건너뛴다.
-const CATEGORY_ORDER = [
-  "주일예배",
-  "성탄축하예배",
-  "여름수련회",
-  "단기선교",
-  "교회 행사",
-  "찬양 예배",
-  "새가족 환영",
-  "봉사 활동",
-];
+const CATEGORY_ORDER = ["주일예배", "교회 행사"];
 
 export default function GalleryPage() {
   const photos = galleryData as GalleryPhoto[];
