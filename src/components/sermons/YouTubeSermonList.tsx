@@ -83,26 +83,6 @@ export default function YouTubeSermonList({ videos, fallbackSermons }: Props) {
         </div>
       </div>
 
-      {selectedVideo && (
-        <div className="mb-10">
-          <div className="aspect-video overflow-hidden rounded-lg">
-            <iframe
-              src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
-              title="설교 영상"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="h-full w-full"
-            />
-          </div>
-          <button
-            onClick={() => setSelectedVideo(null)}
-            className="mt-3 text-sm text-[#C46E4E] hover:underline"
-          >
-            목록으로 돌아가기
-          </button>
-        </div>
-      )}
-
       {hasVideos ? (
         filteredVideos.length === 0 ? (
           <p className="py-12 text-center text-[#2C2416]/50">
@@ -110,49 +90,77 @@ export default function YouTubeSermonList({ videos, fallbackSermons }: Props) {
           </p>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredVideos.map((video, i) => (
-              <button
-                key={video.id}
-                onClick={() => setSelectedVideo(video.id)}
-                className="group block rounded-lg border border-[#C46E4E]/10 bg-white p-5 text-left transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
-              >
-                <div className="mb-4 aspect-video overflow-hidden rounded relative">
-                  {video.thumbnail ? (
-                    <Image
-                      src={video.thumbnail}
-                      alt={video.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div
-                      className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${gradients[i % gradients.length]}`}
-                    />
-                  )}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/30 backdrop-blur-sm">
-                      <Play
-                        className="h-5 w-5 text-white ml-0.5"
-                        aria-hidden="true"
+            {filteredVideos.map((video, i) => {
+              const isPlaying = selectedVideo === video.id;
+              return (
+                <div
+                  key={video.id}
+                  className="group block rounded-lg border border-[#C46E4E]/10 bg-white p-5 text-left transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
+                >
+                  <div className="mb-4 aspect-video overflow-hidden rounded relative">
+                    {isPlaying ? (
+                      <iframe
+                        src={`https://www.youtube.com/embed/${video.id}?autoplay=1`}
+                        title={video.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="h-full w-full"
                       />
-                    </div>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => setSelectedVideo(video.id)}
+                        className="absolute inset-0 h-full w-full"
+                        aria-label={`${video.title} 재생`}
+                      >
+                        {video.thumbnail ? (
+                          <Image
+                            src={video.thumbnail}
+                            alt={video.title}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover"
+                          />
+                        ) : (
+                          <div
+                            className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${gradients[i % gradients.length]}`}
+                          />
+                        )}
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/30 backdrop-blur-sm">
+                            <Play
+                              className="h-5 w-5 text-white ml-0.5"
+                              aria-hidden="true"
+                            />
+                          </div>
+                        </div>
+                      </button>
+                    )}
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-[#2C2416] group-hover:text-[#C46E4E] transition-colors line-clamp-2">
+                      {video.title}
+                    </h3>
+                    {video.scripture && (
+                      <p className="text-sm font-medium text-[#C46E4E]/80">{video.scripture}</p>
+                    )}
+                    <span className="flex items-center gap-1 text-sm text-[#2C2416]/60">
+                      <Calendar className="h-3.5 w-3.5" />
+                      {formatDate(video.publishedAt)}
+                    </span>
+                    {isPlaying && (
+                      <button
+                        type="button"
+                        onClick={() => setSelectedVideo(null)}
+                        className="text-sm text-[#C46E4E] hover:underline"
+                      >
+                        닫기
+                      </button>
+                    )}
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold text-[#2C2416] group-hover:text-[#C46E4E] transition-colors line-clamp-2">
-                    {video.title}
-                  </h3>
-                  {video.scripture && (
-                    <p className="text-sm font-medium text-[#C46E4E]/80">{video.scripture}</p>
-                  )}
-                  <span className="flex items-center gap-1 text-sm text-[#2C2416]/60">
-                    <Calendar className="h-3.5 w-3.5" />
-                    {formatDate(video.publishedAt)}
-                  </span>
-                </div>
-              </button>
-            ))}
+              );
+            })}
           </div>
         )
       ) : (
